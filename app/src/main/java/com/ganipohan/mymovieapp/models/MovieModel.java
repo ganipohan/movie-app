@@ -3,18 +3,25 @@ package com.ganipohan.mymovieapp.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 public class MovieModel implements Parcelable {
     private String title;
     private String poster_path;
+    private String backdrop_path;
     private String release_date;
     private int movie_id;
     private float vote_average;
+
+    @SerializedName("overview")
     private String movie_overview;
+
     private String original_language;
 
-    public MovieModel(String title, String poster_path, String release_date, int movie_id, float vote_average, String movie_overview, String original_language) {
+    public MovieModel(String title, String poster_path, String backdrop_path, String release_date, int movie_id, float vote_average, String movie_overview, String original_language) {
         this.title = title;
         this.poster_path = poster_path;
+        this.backdrop_path = backdrop_path;
         this.release_date = release_date;
         this.movie_id = movie_id;
         this.vote_average = vote_average;
@@ -25,6 +32,7 @@ public class MovieModel implements Parcelable {
     protected MovieModel(Parcel in) {
         title = in.readString();
         poster_path = in.readString();
+        backdrop_path = in.readString();
         release_date = in.readString();
         movie_id = in.readInt();
         vote_average = in.readFloat();
@@ -50,6 +58,10 @@ public class MovieModel implements Parcelable {
 
     public String getPoster_path() {
         return poster_path;
+    }
+
+    public String getBackdrop_path() {
+        return backdrop_path;
     }
 
     public String getRelease_date() {
@@ -81,6 +93,7 @@ public class MovieModel implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(title);
         parcel.writeString(poster_path);
+        parcel.writeString(backdrop_path);
         parcel.writeString(release_date);
         parcel.writeInt(movie_id);
         parcel.writeFloat(vote_average);
@@ -93,6 +106,7 @@ public class MovieModel implements Parcelable {
         return "MovieModel{" +
                 "title='" + title + '\'' +
                 ", poster_path='" + poster_path + '\'' +
+                ", backdrop_path='" + backdrop_path + '\'' +
                 ", release_date='" + release_date + '\'' +
                 ", movie_id=" + movie_id +
                 ", vote_average=" + vote_average +

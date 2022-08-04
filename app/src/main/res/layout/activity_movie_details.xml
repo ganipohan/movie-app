@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MovieDetails">
+
+    <ImageView
+        android:id="@+id/imageView_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:src="@drawable/captain_marvel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_details"
+        android:orientation="vertical"
+        android:background="@drawable/shadow_back">
+
+        <TextView
+            android:id="@+id/textView_title_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:text="TextView"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_details"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <RatingBar
+            android:id="@+id/ratingBar_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:numStars="5"
+            android:stepSize="0.1"
+            android:layout_gravity="start"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:isIndicator="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_title_details" />
+
+        <TextView
+            android:id="@+id/textView_desc_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:text="dfadf asdfg asdgadg adgadg adgadg adg aha dasdf asdg adgagd asdgdgasdg gd gadga gads"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar_details"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
