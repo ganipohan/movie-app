@@ -1,7 +1,6 @@
 package com.ganipohan.mymovieapp.repositories;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import com.ganipohan.mymovieapp.models.MovieModel;
 import com.ganipohan.mymovieapp.request.MovieApiClient;

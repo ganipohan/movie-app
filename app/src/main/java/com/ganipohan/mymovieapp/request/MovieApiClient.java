@@ -89,7 +89,7 @@ public class MovieApiClient {
                 //Cancelling the retrofit call
                 myHandler2.cancel(true);
             }
-        }, 1000, TimeUnit.MILLISECONDS);
+        }, 3000, TimeUnit.MILLISECONDS);
     }
 
 
@@ -124,6 +124,8 @@ public class MovieApiClient {
                     }else{
                         List<MovieModel> currentMovies = mMovies.getValue();
                         currentMovies.addAll(list);
+                        //add currentMovie to list liveData
+                        mMovies.postValue(currentMovies);
                     }
                 }else{
                     String error = response.errorBody().string();

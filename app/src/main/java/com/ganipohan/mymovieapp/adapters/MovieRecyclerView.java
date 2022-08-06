@@ -1,6 +1,6 @@
 package com.ganipohan.mymovieapp.adapters;
 
-import android.util.Log;
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,26 +20,18 @@ public class MovieRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
     private List<MovieModel> mMovies;
     private OnMovieListener onMovieListener;
 
-//    private static final int DISPLAY_POP = 1;
-//    private static final int DISPLAY_SEARCH = 2;
+    private static final int DISPLAY_POP = 1;
+    private static final int DISPLAY_SEARCH = 2;
 
-    boolean isPopuler;
-
-    public MovieRecyclerView(OnMovieListener onMovieListener, boolean b) {
+    public MovieRecyclerView(OnMovieListener onMovieListener) {
         this.onMovieListener = onMovieListener;
-        if (b){
-            isPopuler = true;
-        }else {
-            isPopuler = false;
-        }
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = null;
-//        if (viewType == DISPLAY_SEARCH){
-        if (isPopuler == false){
+        if (viewType == DISPLAY_SEARCH){
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_list_item,
                     parent, false);
             return new MovieViewHolder(view, onMovieListener);
@@ -54,12 +46,10 @@ public class MovieRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         int itemViewType = getItemViewType(position);
-//        if (itemViewType == DISPLAY_SEARCH){
-        if (isPopuler==false){
+        if (itemViewType == DISPLAY_SEARCH){
             ((MovieViewHolder)holder).title.setText(mMovies.get(position).getTitle());
             ((MovieViewHolder)holder).release_date.setText(mMovies.get(position).getRelease_date());
             ((MovieViewHolder)holder).original_language.setText(mMovies.get(position).getOriginal_language());
-
             ((MovieViewHolder)holder).ratingBar.setRating((mMovies.get(position).getVote_average())/2);
 
             Glide.with(holder.itemView.getContext())
@@ -88,6 +78,7 @@ public class MovieRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
         return 0;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setmMovies(List<MovieModel> mMovies) {
         this.mMovies = mMovies;
         notifyDataSetChanged();
@@ -101,11 +92,11 @@ public class MovieRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
         return null;
     }
 
-//    @Override
-//    public int getItemViewType(int position) {
-//        if (Credentials.POPULAR){
-//            return DISPLAY_POP;
-//        }else
-//            return DISPLAY_SEARCH;
-//    }
+    @Override
+    public int getItemViewType(int position) {
+        if (Credentials.POPULAR){
+            return DISPLAY_POP;
+        }else
+            return DISPLAY_SEARCH;
+    }
 }
