@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MovieDetails">
+    tools:context=".ui.MovieDetails">
 
     <ImageView
         android:id="@+id/imageView_details"
@@ -16,43 +16,88 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:padding="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="5dp"
+            android:background="@drawable/ic_circle">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="-5dp"
+                android:src="@drawable/ic_back" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="5dp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/ic_circle">
+
+            <ImageView
+                android:id="@+id/add_favorite"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:paddingTop="2dp"
+                android:src="@drawable/ic_favorite"
+                app:tint="@color/design_default_color_primary" />
+        </LinearLayout>
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/imageView_details"
+        android:background="@drawable/shadow_back"
         android:orientation="vertical"
-        android:background="@drawable/shadow_back">
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/textView_title_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginTop="20dp"
-            android:textStyle="bold"
-            android:textSize="30dp"
+            android:layout_marginEnd="16dp"
             android:text="TextView"
             android:textColor="@color/white"
+            android:textSize="30dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/imageView_details"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_details" />
 
         <RatingBar
             android:id="@+id/ratingBar_details"
+            style="?android:attr/ratingBarStyleIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="start"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
+            android:isIndicator="true"
             android:numStars="5"
             android:stepSize="0.1"
-            android:layout_gravity="start"
-            style="?android:attr/ratingBarStyleIndicator"
-            android:isIndicator="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_title_details" />
 
@@ -61,14 +106,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginTop="10dp"
-            android:textColor="@color/white"
+            android:layout_marginEnd="16dp"
             android:text="dfadf asdfg asdgadg adgadg adgadg adg aha dasdf asdg adgagd asdgdgasdg gd gadga gads"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/ratingBar_details"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar_details" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

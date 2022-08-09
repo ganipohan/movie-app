@@ -7,10 +7,17 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/mvvm-movie-app/app/src/main/res/drawable/search_background.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/mvvm-movie-app/app/src/main/res/drawable/shadow_back.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/mvvm-movie-app/app/src/main/res/drawable/shadow_gray.xml" value="0.1" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/mvvm-movie-app/app/src/main/res/layout/activity_main.xml" value="0.118359375" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/mvvm-movie-app/app/src/main/res/layout/activity_movie_details.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/mvvm-movie-app/app/src/main/res/layout/activity_create.xml" value="0.118359375" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/mvvm-movie-app/app/src/main/res/layout/activity_favorite.xml" value="0.1" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/mvvm-movie-app/app/src/main/res/layout/activity_main.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/mvvm-movie-app/app/src/main/res/layout/activity_movie_details.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/mvvm-movie-app/app/src/main/res/layout/activity_read.xml" value="0.118359375" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/mvvm-movie-app/app/src/main/res/layout/create_activity.xml" value="0.117578125" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/mvvm-movie-app/app/src/main/res/layout/item_barang.xml" value="0.117578125" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/mvvm-movie-app/app/src/main/res/layout/list_favorite_movie.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/mvvm-movie-app/app/src/main/res/layout/movie_list_item.xml" value="0.118359375" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/mvvm-movie-app/app/src/main/res/layout/popular_movie_layout.xml" value="0.1" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/mvvm-movie-app/app/src/main/res/layout/view_dialog.xml" value="0.117578125" />
       </map>
     </option>
   </component>
