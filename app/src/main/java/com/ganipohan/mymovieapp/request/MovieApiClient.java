@@ -33,30 +33,30 @@ public class MovieApiClient {
     private RetrieveMoviesRunnablePop retrieveMoviesRunnablePop;
 
 
-    public static MovieApiClient getInstance(){
-        if(instance == null){
+    public static MovieApiClient getInstance() {
+        if (instance == null) {
             instance = new MovieApiClient();
         }
         return instance;
     }
 
-    private MovieApiClient(){
+    private MovieApiClient() {
         mMovies = new MutableLiveData<>();
         mMoviesPop = new MutableLiveData<>();
     }
 
-    public LiveData<List<MovieModel>> getMovies(){
+    public LiveData<List<MovieModel>> getMovies() {
         return mMovies;
     }
 
-    public LiveData<List<MovieModel>> getMoviesPop(){
+    public LiveData<List<MovieModel>> getMoviesPop() {
         return mMoviesPop;
     }
 
     //1-this method that we are going to call throught the clases
-    public void searchMoviesApi(String query, int pageNumber){
+    public void searchMoviesApi(String query, int pageNumber) {
 
-        if (retrieveMoviesRunnable != null){
+        if (retrieveMoviesRunnable != null) {
             retrieveMoviesRunnable = null;
         }
 
@@ -73,9 +73,9 @@ public class MovieApiClient {
         }, 3000, TimeUnit.MILLISECONDS);
     }
 
-    public void searchMoviesPop(int pageNumber){
+    public void searchMoviesPop(int pageNumber) {
 
-        if (retrieveMoviesRunnablePop != null){
+        if (retrieveMoviesRunnablePop != null) {
             retrieveMoviesRunnablePop = null;
         }
 
@@ -94,7 +94,7 @@ public class MovieApiClient {
 
 
     //Retrieving data from RestAPI by runnable class
-    private class RetrieveMoviesRunnable implements Runnable{
+    private class RetrieveMoviesRunnable implements Runnable {
 
         private String query;
         private int pageNumber;
@@ -111,25 +111,25 @@ public class MovieApiClient {
             //Getting the response objects
             try {
                 Response response = getMovies(query, pageNumber).execute();
-                if (cancelRequest){
+                if (cancelRequest) {
                     return;
                 }
-                if (response.code() == 200){
-                    List<MovieModel> list = new ArrayList<>(((MovieSearchResponse)response.body()).getMovies());
-                    if (pageNumber == 1){
+                if (response.code() == 200) {
+                    List<MovieModel> list = new ArrayList<>(((MovieSearchResponse) response.body()).getMovies());
+                    if (pageNumber == 1) {
                         //Sending data to livedata
                         //PostValue: used for background thread
                         //setValue: not for background thread
                         mMovies.postValue(list);
-                    }else{
+                    } else {
                         List<MovieModel> currentMovies = mMovies.getValue();
                         currentMovies.addAll(list);
                         //add currentMovie to list liveData
                         mMovies.postValue(currentMovies);
                     }
-                }else{
+                } else {
                     String error = response.errorBody().string();
-                    Log.v("Tag","Error "+error);
+                    Log.v("Tag", "Error " + error);
                     mMovies.postValue(null);
                 }
 
@@ -139,9 +139,8 @@ public class MovieApiClient {
             }
         }
 
-
         //Search method/query
-        private Call<MovieSearchResponse> getMovies(String query, int pageNumber){
+        private Call<MovieSearchResponse> getMovies(String query, int pageNumber) {
             return Servicey.getMovieApi().searchMovie(
                     Credentials.API_KEY,
                     query,
@@ -149,15 +148,13 @@ public class MovieApiClient {
             );
         }
 
-        private void cancelRequest(){
+        private void cancelRequest() {
             Log.v("Tag", "Cancelling Search Request");
             cancelRequest = true;
         }
-
-
     }
 
-    private class RetrieveMoviesRunnablePop implements Runnable{
+    private class RetrieveMoviesRunnablePop implements Runnable {
 
         private int pageNumber;
         boolean cancelRequest;
@@ -172,23 +169,23 @@ public class MovieApiClient {
             //Getting the response objects
             try {
                 Response response2 = getPop(pageNumber).execute();
-                if (cancelRequest){
+                if (cancelRequest) {
                     return;
                 }
-                if (response2.code() == 200){
-                    List<MovieModel> list = new ArrayList<>(((MovieSearchResponse)response2.body()).getMovies());
-                    if (pageNumber == 1){
+                if (response2.code() == 200) {
+                    List<MovieModel> list = new ArrayList<>(((MovieSearchResponse) response2.body()).getMovies());
+                    if (pageNumber == 1) {
                         //Sending data to livedata
                         //PostValue: used for background thread
                         //setValue: not for background thread
                         mMoviesPop.postValue(list);
-                    }else{
+                    } else {
                         List<MovieModel> currentMovies = mMoviesPop.getValue();
                         currentMovies.addAll(list);
                     }
-                }else{
+                } else {
                     String error = response2.errorBody().string();
-                    Log.v("Tag","Error "+error);
+                    Log.v("Tag", "Error " + error);
                     mMoviesPop.postValue(null);
                 }
 
@@ -200,14 +197,14 @@ public class MovieApiClient {
 
 
         //Search method/query
-        private Call<MovieSearchResponse> getPop(int pageNumber){
+        private Call<MovieSearchResponse> getPop(int pageNumber) {
             return Servicey.getMovieApi().getPopular(
                     Credentials.API_KEY,
                     pageNumber
             );
         }
 
-        private void cancelRequest(){
+        private void cancelRequest() {
             Log.v("Tag", "Cancelling Search Request");
             cancelRequest = true;
         }

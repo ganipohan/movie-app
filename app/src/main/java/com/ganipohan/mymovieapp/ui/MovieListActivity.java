@@ -1,9 +1,10 @@
-package com.ganipohan.mymovieapp;
+package com.ganipohan.mymovieapp.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,11 +15,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import com.ganipohan.mymovieapp.R;
 import com.ganipohan.mymovieapp.adapters.MovieRecyclerView;
 import com.ganipohan.mymovieapp.adapters.OnMovieListener;
 import com.ganipohan.mymovieapp.models.MovieModel;
+import com.ganipohan.mymovieapp.ui.barang.RoomReadActivity;
 import com.ganipohan.mymovieapp.utils.Credentials;
 import com.ganipohan.mymovieapp.viewmodels.MovieListViewModel;
 
@@ -37,6 +41,8 @@ public class MovieListActivity extends AppCompatActivity implements OnMovieListe
 
     boolean isPopular = true;
     ProgressBar progressBar;
+    ImageView btn_favorite;
+    CardView cardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,15 @@ public class MovieListActivity extends AppCompatActivity implements OnMovieListe
         setContentView(R.layout.activity_main);
 
         progressBar = findViewById(R.id.proggress);
+        cardView = findViewById(R.id.card_view);
+        btn_favorite = findViewById(R.id.fav);
+        btn_favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), RoomReadActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -76,6 +91,8 @@ public class MovieListActivity extends AppCompatActivity implements OnMovieListe
                         //Get the data in log
                         movieRecyclerAdapter.setmMovies(movieModels);
                     }
+                }else{
+                    Log.v("Tag", "List Kosong");
                 }
             }
         });
@@ -105,9 +122,11 @@ public class MovieListActivity extends AppCompatActivity implements OnMovieListe
             recyclerView.setAdapter(movieRecyclerAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
             recyclerView.clearOnScrollListeners();
+            cardView.setVisibility(View.VISIBLE);
         } else {
             movieRecyclerAdapter = new MovieRecyclerView(this);
             Credentials.POPULAR=false;
+            cardView.setVisibility(View.GONE);
             recyclerView.setAdapter(movieRecyclerAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
