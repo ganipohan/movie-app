@@ -22,7 +22,7 @@ import com.ganipohan.mymovieapp.R;
 import com.ganipohan.mymovieapp.adapters.MovieRecyclerView;
 import com.ganipohan.mymovieapp.adapters.OnMovieListener;
 import com.ganipohan.mymovieapp.models.MovieModel;
-import com.ganipohan.mymovieapp.ui.barang.RoomReadActivity;
+import com.ganipohan.mymovieapp.ui.favorite.FavoriteListActivity;
 import com.ganipohan.mymovieapp.utils.Credentials;
 import com.ganipohan.mymovieapp.viewmodels.MovieListViewModel;
 
@@ -55,7 +55,7 @@ public class MovieListActivity extends AppCompatActivity implements OnMovieListe
         btn_favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), RoomReadActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FavoriteListActivity.class);
                 startActivity(intent);
             }
         });

@@ -6,6 +6,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ganipohan.mymovieapp.R;
@@ -15,6 +16,7 @@ public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnC
     TextView title, release_date, original_language;
     ImageView imageView;
     RatingBar ratingBar;
+    ConstraintLayout layoutEmpty;
 
     //Click listener
     OnMovieListener onMovieListener;
@@ -29,6 +31,7 @@ public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnC
         original_language = itemView.findViewById(R.id.movie_duration);
         imageView = itemView.findViewById(R.id.movie_img);
         ratingBar = itemView.findViewById(R.id.rating_bar);
+        layoutEmpty = itemView.findViewById(R.id.layoutEmpty);
 
         itemView.setOnClickListener(this);
     }
