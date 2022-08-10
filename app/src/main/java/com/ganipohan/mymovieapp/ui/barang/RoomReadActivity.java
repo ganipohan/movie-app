@@ -50,6 +50,7 @@ public class RoomReadActivity extends AppCompatActivity {
         db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "barangdb").allowMainThreadQueries().build();
 
+
         /**
          * Initialize recyclerview dan layout manager
          */

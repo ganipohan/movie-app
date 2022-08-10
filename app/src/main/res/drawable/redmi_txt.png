@@ -1,0 +1,6 @@
+01 - request  service  
+02 - utils    credential -> utils    movieApi interface
+03 - models   MovieModel
+04 - respons  MovieSearchResponse
+05 - ui       MovieListActivity
+

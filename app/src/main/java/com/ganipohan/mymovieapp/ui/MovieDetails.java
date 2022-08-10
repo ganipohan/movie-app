@@ -1,13 +1,12 @@
 package com.ganipohan.mymovieapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.room.Room;
 
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -18,7 +17,6 @@ import com.ganipohan.mymovieapp.R;
 import com.ganipohan.mymovieapp.models.Barang;
 import com.ganipohan.mymovieapp.models.MovieModel;
 import com.ganipohan.mymovieapp.roomdb.AppDatabase;
-import com.ganipohan.mymovieapp.ui.barang.RoomCreateActivity;
 
 public class MovieDetails extends AppCompatActivity {
 
@@ -38,6 +36,7 @@ public class MovieDetails extends AppCompatActivity {
 
         db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "barangdb").build();
+
 
         imageViewDetails = findViewById(R.id.imageView_details);
         titleDetails = findViewById(R.id.textView_title_details);
