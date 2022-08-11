@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.ganipohan.mymovieapp.models.favorite.FavoriteModel;
 import com.ganipohan.mymovieapp.repositories.FavoriteRepository;
@@ -15,6 +16,8 @@ import java.util.concurrent.ExecutionException;
 public class FavoriteViewModel extends AndroidViewModel {
 
     private FavoriteRepository favoriteRepository;
+
+    private MutableLiveData<FavoriteModel> favoriteModelMutableLiveData = new MutableLiveData<>();
 
 
     public FavoriteViewModel(@NonNull Application application) {
@@ -41,5 +44,9 @@ public class FavoriteViewModel extends AndroidViewModel {
 
     public LiveData<List<FavoriteModel>> getAllFavoriteLive(){
         return favoriteRepository.getAllFavorite();
+    }
+
+    public LiveData<FavoriteModel> getUserList() {
+        return favoriteModelMutableLiveData;
     }
 }

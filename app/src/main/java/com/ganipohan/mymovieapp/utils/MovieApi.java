@@ -27,7 +27,7 @@ public interface MovieApi {
 
     //search with id
     @GET("/3/movie/{movie_id}?")
-    Call<MovieModel> getMovie(
+    Call<MovieModel> getMovieDetail(
             @Path("movie_id") int movie_id,
             @Query("api_key") String api_key
     );

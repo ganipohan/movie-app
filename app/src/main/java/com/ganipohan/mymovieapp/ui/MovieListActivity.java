@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,6 +36,7 @@ public class MovieListActivity extends AppCompatActivity implements OnMovieListe
 
     private RecyclerView recyclerView;
     private MovieRecyclerView movieRecyclerAdapter;
+    private ConstraintLayout emptyLayout;
 
     //ViewModel
     private MovieListViewModel movieListViewModel;
@@ -50,6 +52,7 @@ public class MovieListActivity extends AppCompatActivity implements OnMovieListe
         setContentView(R.layout.activity_main);
 
         progressBar = findViewById(R.id.proggress);
+        emptyLayout = findViewById(R.id.layoutEmpty);
         cardView = findViewById(R.id.card_view);
         btn_favorite = findViewById(R.id.fav);
         btn_favorite.setOnClickListener(new View.OnClickListener() {
@@ -90,9 +93,11 @@ public class MovieListActivity extends AppCompatActivity implements OnMovieListe
                     for (MovieModel movieModel : movieModels) {
                         //Get the data in log
                         movieRecyclerAdapter.setmMovies(movieModels);
+                        emptyLayout.setVisibility(View.INVISIBLE);
                     }
                 }else{
                     Log.v("Tag", "List Kosong");
+                    emptyLayout.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -108,7 +113,11 @@ public class MovieListActivity extends AppCompatActivity implements OnMovieListe
                     for (MovieModel movieModel : movieModels) {
                         //Get the data in log
                         movieRecyclerAdapter.setmMovies(movieModels);
+                        emptyLayout.setVisibility(View.INVISIBLE);
                     }
+                }else{
+                    Log.v("Tag", "List Kosong");
+                    emptyLayout.setVisibility(View.VISIBLE);
                 }
             }
         });

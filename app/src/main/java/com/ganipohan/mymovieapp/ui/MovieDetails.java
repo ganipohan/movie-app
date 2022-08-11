@@ -19,13 +19,15 @@ import com.bumptech.glide.Glide;
 import com.ganipohan.mymovieapp.R;
 import com.ganipohan.mymovieapp.models.MovieModel;
 import com.ganipohan.mymovieapp.models.favorite.FavoriteModel;
+import com.ganipohan.mymovieapp.response.MovieSearchResponse;
 import com.ganipohan.mymovieapp.ui.favorite.FavoriteListActivity;
 import com.ganipohan.mymovieapp.viewmodels.FavoriteViewModel;
+import com.ganipohan.mymovieapp.viewmodels.MovieListViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MovieDetails extends AppCompatActivity {
-
 
     private FavoriteViewModel favoriteViewModel;
     private FavoriteModel favoriteModel;
@@ -69,11 +71,6 @@ public class MovieDetails extends AppCompatActivity {
             describ = descDetails.getText().toString();
             images = movieModel.getPoster_path();
             vote_average = String.valueOf(movieModel.getVote_average());
-
-            if (title.equals(movieModel.getTitle())){
-
-                Toast.makeText(getApplicationContext(), "Sama", Toast.LENGTH_SHORT).show();
-            }
 
             Glide.with(this)
                     .load("https://image.tmdb.org/t/p/w500/" + movieModel.getPoster_path())

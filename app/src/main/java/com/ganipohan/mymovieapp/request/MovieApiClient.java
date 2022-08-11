@@ -32,7 +32,6 @@ public class MovieApiClient {
     //making global pupular runnabel
     private RetrieveMoviesRunnablePop retrieveMoviesRunnablePop;
 
-
     public static MovieApiClient getInstance() {
         if (instance == null) {
             instance = new MovieApiClient();
@@ -55,15 +54,11 @@ public class MovieApiClient {
 
     //1-this method that we are going to call throught the clases
     public void searchMoviesApi(String query, int pageNumber) {
-
         if (retrieveMoviesRunnable != null) {
             retrieveMoviesRunnable = null;
         }
-
         retrieveMoviesRunnable = new RetrieveMoviesRunnable(query, pageNumber);
-
         final Future myHandler = AppExecutors.getInstance().networkIO().submit(retrieveMoviesRunnable);
-
         AppExecutors.getInstance().networkIO().schedule(new Runnable() {
             @Override
             public void run() {
@@ -74,15 +69,11 @@ public class MovieApiClient {
     }
 
     public void searchMoviesPop(int pageNumber) {
-
         if (retrieveMoviesRunnablePop != null) {
             retrieveMoviesRunnablePop = null;
         }
-
         retrieveMoviesRunnablePop = new RetrieveMoviesRunnablePop(pageNumber);
-
         final Future myHandler2 = AppExecutors.getInstance().networkIO().submit(retrieveMoviesRunnablePop);
-
         AppExecutors.getInstance().networkIO().schedule(new Runnable() {
             @Override
             public void run() {
@@ -91,7 +82,6 @@ public class MovieApiClient {
             }
         }, 3000, TimeUnit.MILLISECONDS);
     }
-
 
     //Retrieving data from RestAPI by runnable class
     private class RetrieveMoviesRunnable implements Runnable {
@@ -211,4 +201,6 @@ public class MovieApiClient {
 
 
     }
+
+
 }
